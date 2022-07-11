@@ -8,3 +8,4 @@ module_dir.mkdir(exist_ok=True)
 
 # add all the directory that will be used in the app.
 tmp_dir = Path.home() / "tmp"
+tmp_dir.mkdir(exist_ok=True)

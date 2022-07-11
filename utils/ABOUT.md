@@ -1,24 +1,17 @@
-## a first section 
+Fake application using the `sepal_ui` framework to create an interactive **Voila** panel dashboard.
+Go to the [sepal_ui repository](https://github.com/12rambau/sepal_ui) for more information about the components used in this template.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat cursus felis et vestibulum. Donec quis ultrices ligula. Integer **dolor nunc**, molestie quis sem sit amet, volutpat vulputate lorem. Nullam ut ante nibh. Nulla pulvinar vel diam id efficitur. In a ligula viverra, aliquet nulla sed, accumsan metus. Sed vel magna et turpis sodales placerat eu at lectus. Aenean commodo ligula turpis, ut maximus libero pretium vitae. Nam ipsum nulla, hendrerit a arcu non, ornare pretium leo. Morbi ut lacus sed leo suscipit malesuada. Donec varius mi auctor diam condimentum egestas.  
+## Usage 
 
-Integer blandit vitae ex sed facilisis. *Curabitur in eros commodo sem auctor maximus ac ac massa.* Ut fermentum consectetur massa, nec egestas sapien. Mauris cursus sem et eros auctor, et eleifend dui euismod. Vivamus lacinia porta augue, in luctus neque venenatis vitae. Nullam placerat efficitur turpis, eget bibendum sem imperdiet ut. Mauris viverra nibh sed aliquam egestas. Vestibulum vitae nibh id mi volutpat cursus eu eu lectus. Ut a augue nisi.  
+This template is bound on top of the `module_factory`CLI from [sepal_ui](https://github.com/12rambau/sepal_ui) lib. It is designed to be display in heroku as a stand-alone app.
 
-you can add code : 
-```py
-#some code 
-class foo:
-    def __init__():
-        self.toto = 10
+local usage is as simple as: 
+
+```
+git clone git@github.com:12rambau/panel_app.git
+cd panel_app
+module_venv
+voila ui.ipynb
 ```
 
-and lists :  
-  
-- itemList     
-- itemList      
-- itemList       
-
-even links like [sepal](https://github.com/openforis/)
-
-## a second section 
 

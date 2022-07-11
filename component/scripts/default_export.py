@@ -2,10 +2,10 @@ from pathlib import Path
 
 import ee
 from sepal_ui.scripts import gee
+from sepal_ui.scripts import decorator as sd
 
-ee.Initialize()
 
-
+@sd.need_ee
 def export_dataset(aoi_io, scale, dataset):
     """export the given dataset as an asset using the provided scale cliped on the aoi_io"""
 
