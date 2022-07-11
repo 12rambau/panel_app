@@ -11,6 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test files formatting
-        uses: psf/black@stable
-      - name: remove nb outputs
-        uses: 
+        uses: psf/black@stable 
