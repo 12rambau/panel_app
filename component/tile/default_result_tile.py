@@ -1,8 +1,9 @@
-from sepal_ui import sepalwidgets as sw
-from sepal_ui import mapping as sm
 from ipywidgets import Output
+from sepal_ui import mapping as sm
+from sepal_ui import sepalwidgets as sw
 
 from component.message import cm
+
 
 class DefaultResultTile(sw.Tile):
     def __init__(self, **kwargs):
@@ -22,7 +23,7 @@ class DefaultResultTile(sw.Tile):
             ],
         )
 
-        #create the widget
+        # create the widget
         super().__init__(
             id_="default_result_tile",
             title=cm.default_result.title,

@@ -1,6 +1,7 @@
 from sepal_ui.model import Model
 from traitlets import Any
 
+
 class DefaultVizModel(Model):
 
     # set up your inputs

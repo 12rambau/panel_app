@@ -1,17 +1,15 @@
 import time
 
+import ee
 import numpy as np
 import pandas as pd
-import ee
-import ipyvuetify as v
 from matplotlib import pyplot as plt
 from sepal_ui import color as sc
 from sepal_ui import get_theme
 from sepal_ui.scripts import decorator as sd
 
-from component.message import cm
 from component import parameter as cp
-
+from component.message import cm
 
 
 def default_csv(output, pcnt, name):
@@ -37,7 +35,6 @@ def default_hist(fig_hist):
     # generate some fake data
     np.random.seed(0)
     n = 2000
-    x = np.linspace(0.0, 10.0, n)
     y = np.cumsum(np.random.randn(n) * 10).astype(int)
 
     # create a pyplot figure
@@ -47,12 +44,21 @@ def default_hist(fig_hist):
         with plt.style.context(context):
             fig, ax = plt.subplots(figsize=(10, 10))
             fig.patch.set_alpha(0.0)
-            ax.hist(x=y, bins=25, color=[sc.primary], histtype="bar", stacked=True, edgecolor="black", rwidth=0.8)
+            ax.hist(
+                x=y,
+                bins=25,
+                color=[sc.primary],
+                histtype="bar",
+                stacked=True,
+                edgecolor="black",
+                rwidth=0.8,
+            )
             ax.set_title(cm.default_process.hist_title, fontweight="bold")
             ax.patch.set_alpha(0.0)
             plt.show()
 
     return fig_hist
+
 
 @sd.need_ee
 def default_maps(ee_aoi, m):
@@ -74,8 +80,8 @@ def default_maps(ee_aoi, m):
     m.addLayer(dataset.clip(ee_aoi), {"bands": "treecover2000"}, cm.default_process.treecover2000)  # printing the forest coverage in 2000
     m.addLayer(dataset.clip(ee_aoi), {"bands": ["last_b50", "last_b40", "last_b30"]}, cm.default_process.healthy_veg,)  # mapping the forest in 2015
     m.addLayer(dataset.clip(ee_aoi), {"bands": ["loss", "treecover2000", "gain"]}, cm.default_process.green)  # map the gain and losses
-    m.addLayer(dataset.clip(ee_aoi), {"bands": ["loss", "treecover2000", "gain"], max: [1, 255, 1]}, cm.default_process.green_update,) # map the gain and losses with bright colors
-    m.addLayer(GainAndLoss.updateMask(GainAndLoss), {"palette": "FF00FF"},cm.default_process.gain_loss) # map the place where gain and loss happened
+    m.addLayer(dataset.clip(ee_aoi), {"bands": ["loss", "treecover2000", "gain"], max: [1, 255, 1]}, cm.default_process.green_update,)  # map the gain and losses with bright colors
+    m.addLayer(GainAndLoss.updateMask(GainAndLoss), {"palette": "FF00FF"}, cm.default_process.gain_loss)  # map the place where gain and loss happened
     # fmt: on
-    
+
     return dataset

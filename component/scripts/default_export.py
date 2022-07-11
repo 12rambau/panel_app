@@ -1,8 +1,10 @@
 from pathlib import Path
 
 import ee
-from sepal_ui.scripts import gee
 from sepal_ui.scripts import decorator as sd
+from sepal_ui.scripts import gee
+
+from component.message import cm
 
 
 @sd.need_ee

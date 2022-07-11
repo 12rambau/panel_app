@@ -2,7 +2,6 @@ from sepal_ui import sepalwidgets as sw
 
 
 class DefaultResInput(sw.TextField):
-  
     def __init__(self, min_res, max_res, **kwargs):
 
         # set up some vuetify parameters

@@ -1,10 +1,10 @@
 from sepal_ui import sepalwidgets as sw
-from sepal_ui.scripts import utils as su 
 from sepal_ui.scripts import decorator as sd
+from sepal_ui.scripts import utils as su
 
 from component import scripts as cs
-from component.message import cm
 from component import widget as cw
+from component.message import cm
 
 
 class DefaultExportTile(sw.Tile):
@@ -14,8 +14,10 @@ class DefaultExportTile(sw.Tile):
         self.model = model
         self.aoi_model = aoi_model
 
-        # create the widgets 
-        self.scale = cw.DefaultResInput(label=cm.default_process.scale, min_res=10, max_res=300)
+        # create the widgets
+        self.scale = cw.DefaultResInput(
+            label=cm.default_process.scale, min_res=10, max_res=300
+        )
 
         # construct the Tile with the widget we have initialized
         super().__init__(
@@ -36,9 +38,13 @@ class DefaultExportTile(sw.Tile):
         su.check_input(self.model.dataset, cm.default_process.no_dataset)
 
         # execute the script
-        asset_name = cs.export_dataset(self.aoi_model, self.scale.v_model, self.model.dataset)
+        asset_name = cs.export_dataset(
+            self.aoi_model, self.scale.v_model, self.model.dataset
+        )
 
         # conclude the computation with a message
-        self.alert.add_live_msg(cm.default_gee.task_launched.format(asset_name), "success")
+        self.alert.add_live_msg(
+            cm.default_gee.task_launched.format(asset_name), "success"
+        )
 
         return

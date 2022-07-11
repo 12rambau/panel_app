@@ -5,8 +5,8 @@ from sepal_ui.scripts import utils as su
 from component import scripts
 from component.message import cm
 
+
 class DefaultVizTile(sw.Tile):
-  
     def __init__(self, model, aoi_model, result_tile):
 
         # define the models
@@ -17,7 +17,9 @@ class DefaultVizTile(sw.Tile):
         self.result_tile = result_tile
 
         # create widgets
-        self.slider = sw.Slider(label=cm.default_process.slider, class_="mt-5", thumb_label=True, v_model=0)
+        self.slider = sw.Slider(
+            label=cm.default_process.slider, class_="mt-5", thumb_label=True, v_model=0
+        )
         self.text = sw.TextField(label=cm.default_process.textfield, v_model=None)
 
         # link the widgets to the model
@@ -37,19 +39,19 @@ class DefaultVizTile(sw.Tile):
 
     @sd.loading_button(debug=False)
     def _on_run(self, widget, data, event):
-      
-        # check inputs 
+
+        # check inputs
         su.check_input(self.aoi_model.name, cm.default_process.no_aoi)
         su.check_input(self.model.slider_value, cm.default_process.no_slider)
         su.check_input(self.model.text_value, cm.default_process.no_textfield)
 
         # launch the process
         csv_path = scripts.default_csv(
-            output=self.alert, 
-            pcnt=self.model.slider_value, 
+            output=self.alert,
+            pcnt=self.model.slider_value,
             name=self.model.text_value,
         )
-        
+
         # save the file to the dwn file
         self.result_tile.down_btn.set_url(csv_path)
 
